@@ -4,8 +4,10 @@ import { MessagesRepository } from './messages.repository';
  * Service responsible for handling messages.
  */
 export class MessagesService {
-  constructor(public messagesRepository: MessagesRepository) {
-    this.messagesRepository = messagesRepository;
+  messagesRepository: MessagesRepository;
+
+  constructor() {
+    this.messagesRepository = new MessagesRepository();
   }
 
   /**
