@@ -1,14 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { MessagesRepository } from './messages.repository';
 
-/**
- * Service responsible for handling messages.
- */
+@Injectable()
 export class MessagesService {
-  messagesRepository: MessagesRepository;
-
-  constructor() {
-    this.messagesRepository = new MessagesRepository();
-  }
+  constructor(private readonly messagesRepository: MessagesRepository) {}
 
   /**
    * Finds a message by its ID.
@@ -28,8 +23,8 @@ export class MessagesService {
   }
 
   /**
-   * Creates a new message.
-   * @param content The content of the message to create.
+   * Creates a new message with the specified content.
+   * @param content The content of the new message.
    * @returns The newly created message.
    */
   create(content: string) {

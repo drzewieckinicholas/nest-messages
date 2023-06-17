@@ -11,11 +11,7 @@ import { MessagesService } from './messages.service';
 
 @Controller('messages')
 export class MessagesController {
-  messagesService: MessagesService;
-
-  constructor() {
-    this.messagesService = new MessagesService();
-  }
+  constructor(private readonly messagesService: MessagesService) {}
 
   /**
    * Retrieves a message by id.
@@ -30,6 +26,8 @@ export class MessagesController {
     if (!message) {
       throw new NotFoundException(`Message with id ${id} not found`);
     }
+
+    return message;
   }
 
   /**
